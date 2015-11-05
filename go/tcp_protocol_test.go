@@ -1,7 +1,6 @@
 package xbp
 
 import (
-	"log"
 	"net"
 	"testing"
 
@@ -31,7 +30,6 @@ func TestProtocolReal(t *testing.T) {
 	pkt, err := p2.ReadPacket()
 
 	assert.Nil(t, err)
-	log.Println("return packet", pkt.Payload)
 	assert.Equal(t, FlagResponse, pkt.Flag&FlagResponse)
 	assert.Equal(t, "222", pkt.Text)
 	assert.EqualValues(t, 123, pkt.Seq)

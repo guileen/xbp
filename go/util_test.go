@@ -3,8 +3,6 @@ package xbp
 import (
 	"bufio"
 	"bytes"
-	"fmt"
-	"log"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -28,11 +26,11 @@ func testSize(t *testing.T, size int) {
 		Payload: payload,
 	})
 	assert.Nil(t, err)
-	log.Println("size:", size)
-	for i := 0; i < len(b.Bytes()) && i < 255; i++ {
-		fmt.Printf("%02x ", b.Bytes()[i])
-	}
-	fmt.Println("")
+	// log.Println("size:", size)
+	// for i := 0; i < len(b.Bytes()) && i < 255; i++ {
+	// 	fmt.Printf("%02x ", b.Bytes()[i])
+	// }
+	// fmt.Println("")
 
 	var pkt Packet
 	r := bufio.NewReader(&b)
