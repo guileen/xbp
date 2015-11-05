@@ -13,13 +13,13 @@ package xbp
 import "net"
 
 // Create new `Connection`
-func New(conn net.Conn) *Connection {
+func New(conn net.Conn) *Conn {
 	return NewConnection(NewTcpProtocol(conn))
 }
 
 // Dial connects to the address on the named network.
 // See net.Dial for more information.
-func Dial(network, addr string) (*Connection, error) {
+func Dial(network, addr string) (*Conn, error) {
 	conn, err := net.Dial(network, addr)
 	if err != nil {
 		return nil, err
@@ -46,7 +46,7 @@ type Listener struct {
 	listener net.Listener
 }
 
-func (l *Listener) Accept() (*Connection, error) {
+func (l *Listener) Accept() (*Conn, error) {
 	conn, err := l.listener.Accept()
 	if err != nil {
 		return nil, err
