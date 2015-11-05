@@ -30,7 +30,7 @@ func (conn *Connection) SendMessage(text string, payload []byte) error {
 }
 
 func (conn *Connection) SendRequest(text string, payload []byte) error {
-	return conn.sendPacket(FlagWaitResponse, conn.getNextSeq(), text, payload)
+	return conn.sendPacket(FlagRequest, conn.getNextSeq(), text, payload)
 }
 
 func (conn *Connection) SendResponse(seq uint16, text string, payload []byte) error {

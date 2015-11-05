@@ -5,13 +5,13 @@ package xbp
 // TypePing - type of Ping. Keepalive
 // TypeHello - type of Hello. Tell the client information related with protocol, like version, zip, supported encoding
 const (
-	FlagMessage      byte = 0x00
-	FlagResponse     byte = 0x80
-	FlagWaitResponse byte = 0x40
-	FlagCRC16        byte = 0x20
-	FlagSEQ          byte = 0x10
-	FlagLenText      byte = 0x0c
-	FlagLenPayload   byte = 0x03
+	FlagMessage    byte = 0x00
+	FlagResponse   byte = 0x80
+	FlagRequest    byte = 0x40
+	FlagCRC16      byte = 0x20
+	FlagSEQ        byte = 0x10
+	FlagLenText    byte = 0x0c
+	FlagLenPayload byte = 0x03
 )
 
 const MaxLength = ^uint32(0)
@@ -34,7 +34,7 @@ func (p *Packet) IsRequest() bool {
 }
 
 func (p *Packet) IsResponse() bool {
-	return p.Flag&FlagWaitResponse == FlagWaitResponse
+	return p.Flag&FlagRequest == FlagRequest
 }
 func (p *Packet) IsMessage() bool {
 	return p.Flag&FlagMessage == FlagMessage
